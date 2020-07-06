@@ -1,87 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+<head>
+    <meta charset="UTF-8">
     <title>Movie Recommender</title>
-  </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style type="text/css">
+    body{
+    background-color: background: #00F260;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  <body>
+    }
 
+</style>
+<body>
+<div style="text-align: center;background-color: #57595D"><br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Q6h6BKf/text.gif" alt="text" border="0"></a>
 
+    <h3 style="text-align: center;color: white">By Shubhodeep Karmakar</h3><hr/>
+</div>
 
-      <nav class="navbar navbar-expand-lg navbar-white bg-dark">
-  <a class="navbar-brand" href="#">Movie Recommender</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="jumbotron">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+		<div class="row">
+			<div class="offset-md-4 col-md-4">
+				<h1 class="lead text-md-center">Enter the Movie name</h1>
+                <h1 class="lead text-md-center">(Hollywood Only)</h1><br>
+                <form style="text-align: center" action="/recommend" method="POST"><br>
+				      <input type="text" class="form-control" name="movie_name" id="search_term"><br>
+				      <button class="btn btn-info btn-block" type="submit" name=""><i class="fa fa-search"></i> Recommend</button>
+                </form>
+                <h3 class="lead text-md-center">Always enter the Movie name in correct gramatical form or the recommender will not work</h3><br>
+<h4 class="lead text-md-center">ex: <strike>sky captain and the world of tomorrow</strike> Sky Captain and the World of Tomorrow</h4>
 
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-     
-
-  <center>
-      <h1>Movie Recommender</h1>
-
-    <h3>Enter the movie name</h3>
-    <form action="/recommend" method="POST">
-        <input type="text" name="movie_name"><br>
-
-        <input type="submit"  class="btn btn-primary" role="button" name="" value="Recommended">
-    </form>
-      </center>
-
-   {% if movie_list %}
-       <h4>List Of movies</h4>
-    <ul>
-       {% for i in movie_list: %}
-             <li>{{i}}</li>
-       {% endfor %}
-    </ul>
+			</div>
+		</div>
+	</div>
 
 
-   {% endif %}
+{% if movie_list %}
+     <h1 style="text-align: center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/C7Tt5KG/text-2.gif" alt="text-2" border="0"></a></h1>
+     <ul><br>
+     {% for i in movie_list %}
+          <h3 style="text-align: center;font-style: italic">{{i}}</h3>
+     {% endfor %}
+      </ul>
+{% endif %}
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<br><br><br><br>
+<div class="col-md-12 copy">
+        <p class="text-center text-light text-success">&copy; designed Copyright 2020 - By Shubhodeep Karmakar (shubhodeepkarmakar@gmail.com).</p>
+      </div>
 
-    <footer class="container mt-3">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2020-2021 Tech With Abhi.com &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
-  </body>
+</body>
 </html>
